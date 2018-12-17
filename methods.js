@@ -4,7 +4,7 @@ var app = new Vue({
     info: null,
     loading: true,
     errored: false,
-    upperIndex: 19,
+    upperIndex: 10,
     lowerIndex: 0,
     selectedEtnic: "All",
     selectedGender: "Any",

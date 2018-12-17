@@ -7,7 +7,7 @@ body {
 }
 
 .person {
-  display: inline-block;
+  display: block;
   background-color: yellowgreen;
   padding: 2px;
   margin: 5px;

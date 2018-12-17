@@ -21,6 +21,7 @@
         <div v-if="loading">Loading ...</div>
         <div v-else>
           <section class="selection">
+            Gender:
             <select v-model="selectedGender">
               <option
                 v-for="option in optionsGender"
@@ -29,6 +30,7 @@
                 {{ option.text }}
               </option>
             </select>
+            Ethnicity:
             <select v-model="selectedEtnic">
               <option v-for="option in getEtnic" v-bind:value="option">
                 <!-- ethcty -->
@@ -47,14 +49,14 @@
       </section>
       <button
         v-if="lowerIndex < 1000"
-        @click="upperIndex += 20, lowerIndex +=20"
+        @click="upperIndex += 10, lowerIndex +=10"
       >
         Next 20 names
       </button>
-      <button v-if="upperIndex > 19" @click="upperIndex -= 20, lowerIndex -=20">
+      <button v-if="upperIndex > 10" @click="upperIndex -= 10, lowerIndex -=10">
         Previous 20 names
       </button>
-      <button @click="upperIndex = 19, lowerIndex = 0">Reset</button>
+      <button @click="upperIndex = 9, lowerIndex = 0">Reset</button>
     </div>
     <script type="text/javascript" src="methods.js"></script>
   </body>
