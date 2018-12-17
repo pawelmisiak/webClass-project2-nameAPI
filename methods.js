@@ -6,8 +6,9 @@ var app = new Vue({
     errored: false,
     upperIndex: 19,
     lowerIndex: 0,
-    selected: "A",
-    options: [
+    selectedEtnic: "",
+    selectedGender: "A",
+    optionsGender: [
       { text: "Both", value: "A" },
       { text: "Female", value: "B" },
       { text: "Male", value: "C" }
@@ -30,6 +31,19 @@ var app = new Vue({
       var length = 0;
       if (this.info) {
         return (length = Object.keys(this.info).length);
+      } else {
+        return;
+      }
+    },
+    getEtnic: function() {
+      var arr = [];
+      if (this.info) {
+        this.info.forEach(element => {
+          arr.push(element.ethcty);
+        });
+        // console.log(arr);
+        var distArr = [...new Set(arr)];
+        return distArr;
       } else {
         return;
       }

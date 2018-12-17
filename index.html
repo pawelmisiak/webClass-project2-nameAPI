@@ -21,8 +21,12 @@
         <div v-if="loading">Loading ...</div>
         <div v-else>
           <section class="selection">
-            <select v-model="selected">
-              <option v-for="option in options" v-bind:value="option.value">
+            <select v-model="selectedGender">
+              <option
+                v-for="option in optionsGender"
+                v-bind:value="option.value"
+              >
+                <!-- ethcty -->
                 {{ option.text }}
               </option>
             </select>
