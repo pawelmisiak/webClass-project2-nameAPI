@@ -1,13 +1,17 @@
 var app = new Vue({
   el: "#app",
-  data() {
-    return {
-      info: null,
-      loading: true,
-      errored: false,
-      upperIndex: 19,
-      lowerIndex: 0
-    };
+  data: {
+    info: null,
+    loading: true,
+    errored: false,
+    upperIndex: 19,
+    lowerIndex: 0,
+    selected: "A",
+    options: [
+      { text: "Both", value: "A" },
+      { text: "Female", value: "B" },
+      { text: "Male", value: "C" }
+    ]
   },
   mounted() {
     axios
@@ -18,11 +22,9 @@ var app = new Vue({
   },
   computed: {
     sortedInfo: function() {
-      return this.info
-        .sort(function(a, b) {
-          return a.cnt - b.cnt;
-        })
-        .reverse();
+      return this.info.sort(function(a, b) {
+        return b.cnt - a.cnt;
+      });
     },
     howMany: function() {
       var length = 0;
