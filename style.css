@@ -1,0 +1,14 @@
+body {
+  background-color: lemonchiffon;
+}
+
+.lighten {
+  font-weight: bold;
+}
+
+.person {
+  display: inline-block;
+  background-color: yellowgreen;
+  padding: 2px;
+  margin: 5px;
+}
