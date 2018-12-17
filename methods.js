@@ -6,10 +6,10 @@ var app = new Vue({
     errored: false,
     upperIndex: 19,
     lowerIndex: 0,
-    selectedEtnic: "",
-    selectedGender: "A",
+    selectedEtnic: "All",
+    selectedGender: "Any",
     optionsGender: [
-      { text: "Both", value: "A" },
+      { text: "Any", value: "A" },
       { text: "Female", value: "B" },
       { text: "Male", value: "C" }
     ]
@@ -38,6 +38,7 @@ var app = new Vue({
     getEtnic: function() {
       var arr = [];
       if (this.info) {
+        arr.push("All");
         this.info.forEach(element => {
           arr.push(element.ethcty);
         });

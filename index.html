@@ -24,14 +24,18 @@
             <select v-model="selectedGender">
               <option
                 v-for="option in optionsGender"
-                v-bind:value="option.value"
+                v-bind:value="option.text"
               >
-                <!-- ethcty -->
                 {{ option.text }}
               </option>
             </select>
+            <select v-model="selectedEtnic">
+              <option v-for="option in getEtnic" v-bind:value="option">
+                <!-- ethcty -->
+                {{ option }}
+              </option>
+            </select>
           </section>
-
           <div
             v-for="(person, index) in sortedInfo"
             v-if="index <= upperIndex && index >= lowerIndex"
