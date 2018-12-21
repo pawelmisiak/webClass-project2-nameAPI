@@ -4,14 +4,14 @@ var app = new Vue({
     info: null,
     loading: true,
     errored: false,
-    upperIndex: 10,
+    upperIndex: 9,
     lowerIndex: 0,
-    selectedEtnic: "All",
-    selectedGender: "Any",
+    selectedEtnic: "ANY",
+    selectedGender: "ANY",
     optionsGender: [
-      { text: "Any", value: "A" },
-      { text: "Female", value: "B" },
-      { text: "Male", value: "C" }
+      { text: "ANY", value: "A" },
+      { text: "FEMALE", value: "B" },
+      { text: "MALE", value: "C" }
     ]
   },
   mounted() {
@@ -23,9 +23,42 @@ var app = new Vue({
   },
   computed: {
     sortedInfo: function() {
-      return this.info.sort(function(a, b) {
+      var temp = this.info.sort(function(a, b) {
         return b.cnt - a.cnt;
       });
+      if (this.selectedGender != "ANY") {
+        if (this.selectedGender == "MALE") {
+          temp = temp.filter(function(el) {
+            return el.gndr == "MALE";
+          });
+        } else {
+          temp = temp.filter(function(el) {
+            return el.gndr == "FEMALE";
+          });
+        }
+      }
+      if (this.selectedEtnic != "ANY") {
+        if (this.selectedEtnic == "ASIAN AND PACIFIC ISLANDER") {
+          temp = temp.filter(function(el) {
+            return el.gndr == "ASIAN AND PACIFIC ISLANDER";
+          });
+        }
+        // else if (this.selectedEtnic == "BLACK NON HISPANIC") {
+        //   temp = temp.filter(function(el) {
+        //     return el.gndr == "BLACK NON HISPANIC";
+        //   });
+        // } else if (this.selectedEtnic == "WHITE NON HISPANIC") {
+        //   temp = temp.filter(function(el) {
+        //     return el.gndr == "BLACK NON HISPANIC";
+        //   });
+        // } else if (this.selectedEtnic == "HISPANIC") {
+        //   temp = temp.filter(function(el) {
+        //     return el.gndr == "HISPANIC";
+        //   });
+        // }
+      }
+
+      return temp;
     },
     howMany: function() {
       var length = 0;
@@ -38,7 +71,7 @@ var app = new Vue({
     getEtnic: function() {
       var arr = [];
       if (this.info) {
-        arr.push("All");
+        arr.push("ANY");
         this.info.forEach(element => {
           arr.push(element.ethcty);
         });
