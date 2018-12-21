@@ -40,24 +40,22 @@ var app = new Vue({
       if (this.selectedEtnic != "ANY") {
         if (this.selectedEtnic == "ASIAN AND PACIFIC ISLANDER") {
           temp = temp.filter(function(el) {
-            return el.gndr == "ASIAN AND PACIFIC ISLANDER";
+            return el.ethcty == "ASIAN AND PACIFIC ISLANDER";
+          });
+        } else if (this.selectedEtnic == "BLACK NON HISPANIC") {
+          temp = temp.filter(function(el) {
+            return el.ethcty == "BLACK NON HISPANIC";
+          });
+        } else if (this.selectedEtnic == "WHITE NON HISPANIC") {
+          temp = temp.filter(function(el) {
+            return el.ethcty == "WHITE NON HISPANIC";
+          });
+        } else if (this.selectedEtnic == "HISPANIC") {
+          temp = temp.filter(function(el) {
+            return el.ethcty == "HISPANIC";
           });
         }
-        // else if (this.selectedEtnic == "BLACK NON HISPANIC") {
-        //   temp = temp.filter(function(el) {
-        //     return el.gndr == "BLACK NON HISPANIC";
-        //   });
-        // } else if (this.selectedEtnic == "WHITE NON HISPANIC") {
-        //   temp = temp.filter(function(el) {
-        //     return el.gndr == "BLACK NON HISPANIC";
-        //   });
-        // } else if (this.selectedEtnic == "HISPANIC") {
-        //   temp = temp.filter(function(el) {
-        //     return el.gndr == "HISPANIC";
-        //   });
-        // }
       }
-
       return temp;
     },
     howMany: function() {
