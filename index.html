@@ -57,6 +57,12 @@
         Previous 20 names
       </button>
       <button @click="upperIndex = 9, lowerIndex = 0">Reset</button>
+      <div>
+        <p>
+          Randomly Generated name is: <strong>{{ randomName }}</strong>
+        </p>
+        <button @click="createRand">Create Random Name</button>
+      </div>
     </div>
     <script type="text/javascript" src="methods.js"></script>
   </body>

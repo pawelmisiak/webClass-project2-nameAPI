@@ -7,6 +7,7 @@ var app = new Vue({
     upperIndex: 9,
     lowerIndex: 0,
     selectedEtnic: "ANY",
+    randomName: "",
     selectedGender: "ANY",
     optionsGender: [
       { text: "ANY", value: "A" },
@@ -15,8 +16,11 @@ var app = new Vue({
     ]
   },
   mounted() {
+    const BASE_URL = "https://data.cityofnewyork.us/resource/g374-eanh.json";
+    // const LIMIT = 3000;
+    // const API_KEY = "c40YU5G1fauBzTem5OeXDvxPw";
     axios
-      .get("https://data.cityofnewyork.us/resource/g374-eanh.json")
+      .get(BASE_URL)
       .then(response => (this.info = response.data))
       .catch(error => console.log(error))
       .finally(() => (this.loading = false));
@@ -79,6 +83,13 @@ var app = new Vue({
       } else {
         return;
       }
+    }
+  },
+  methods: {
+    createRand: function() {
+      var rand = Math.floor(Math.random() * 1000);
+      this.randomName = this.info[rand].nm;
+      return this.randomName;
     }
   }
 });
