@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -11,11 +13,19 @@
   </head>
   <body>
     <div id="app">
-      <h1>Baby Names</h1>
-      <h3>
-        In year {{ info[0].brth_yr }} out of {{ howMany }} names those are the
-        most popular:
-      </h3>
+    <div class="container">
+        <h1>Baby Names</h1>
+        <img src="http://eskipaper.com/images/cute-babies-15.jpg" alt="baby" width="100%">
+          <div class="bottom-left">Need help picking a name? <br> Let us help.</div>
+          </div>
+     <div class="box">
+        <h3>
+        Look through our Forum of popular baby names to help narrow down your choices.<br>    
+        In year {{ info[0].brth_yr }} out of {{ howMany }} names these were the
+            most popular:
+          </h3>
+     </div>
+      
       <section v-if="errored"><p>We're sorry there is some trouble</p></section>
       <section v-else>
         <div v-if="loading">Loading ...</div>
@@ -38,6 +48,7 @@
               </option>
             </select>
           </section>
+        <div class="names">
           <div
             v-for="(person, index) in sortedInfo"
             v-if="index <= upperIndex && index >= lowerIndex"
@@ -45,8 +56,10 @@
           >
             [ {{ index + 1 }} ] {{ person.nm }} was used {{ person.cnt }} times
           </div>
+       
         </div>
       </section>
+      
       <button
         v-if="lowerIndex < 1000"
         @click="upperIndex += 10, lowerIndex +=10"
@@ -57,12 +70,7 @@
         Previous 20 names
       </button>
       <button @click="upperIndex = 9, lowerIndex = 0">Reset</button>
-      <div>
-        <p>
-          Randomly Generated name is: <strong>{{ randomName }}</strong>
-        </p>
-        <button @click="createRand">Create Random Name</button>
-      </div>
+    </div>
     </div>
     <script type="text/javascript" src="methods.js"></script>
   </body>
